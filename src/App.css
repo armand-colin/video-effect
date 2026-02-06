@@ -1,0 +1,8 @@
+.App > .StreamView {
+  width: 300px;
+}
+
+.App > .VideoEffectView {
+  width: 800px;
+  background: red;
+}
