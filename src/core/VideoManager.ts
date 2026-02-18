@@ -6,6 +6,7 @@ export class VideoManager extends Resource {
 
     private _video: Video | null = null
     private _effect: VideoEffect | null = null
+    private _videoConnected = false
 
     get video(): Video | null {
         return this._video
@@ -13,6 +14,16 @@ export class VideoManager extends Resource {
 
     get effect(): VideoEffect | null {
         return this._effect
+    }
+    
+    get mainStream(): MediaStream | null {
+        if (this._effect)
+            return this._effect.stream
+        
+        if (this._video)
+            return this._video.stream
+
+        return null
     }
 
     async request(deviceId?: string) {
@@ -23,8 +34,7 @@ export class VideoManager extends Resource {
             } : true
         })
 
-        this._video = new Video(this.engine, stream)
-
+        this._setVideo(new Video(this.engine, stream))
         this.changed()
     }
 

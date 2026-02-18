@@ -6,9 +6,7 @@ export type VideoEffectOptions = {
     foregroundThreshold: number,
     blurAmount: number,
     edgeBlurAmount: number,
-    flipHorizontal: boolean,
     background: Background | null,
-    maskOpacity: number
 }
 
 export namespace VideoEffectOptions {
@@ -18,9 +16,7 @@ export namespace VideoEffectOptions {
             foregroundThreshold: 0.7,
             blurAmount: 15,
             edgeBlurAmount: 3,
-            flipHorizontal: false,
             background: null,
-            maskOpacity: 1
         }
     }
 
@@ -28,9 +24,7 @@ export namespace VideoEffectOptions {
 
 export type Background = {
     type: "color",
-    r: number,
-    g: number,
-    b: number
+    color: string,
 } | {
     type: "image",
     src: string
@@ -103,10 +97,7 @@ export class VideoEffect extends Component {
                 this._canvas,
                 {
                     foregroundThreshold: this._options.foregroundThreshold,
-                    flipHorizontal: this._options.flipHorizontal,
-                    maskOpacity: this._options.maskOpacity,
                     maskBlurAmount: this._options.edgeBlurAmount,
-                    background: this._options.background
                 }
             )
         } else {
@@ -116,7 +107,6 @@ export class VideoEffect extends Component {
                 {
                     blurAmount: this._options.blurAmount,
                     edgeBlurAmount: this._options.edgeBlurAmount,
-                    flipHorizontal: this._options.flipHorizontal,
                     foregroundThreshold: this._options.foregroundThreshold
                 }
             )

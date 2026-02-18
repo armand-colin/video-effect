@@ -1,12 +1,10 @@
 import { Resource } from "@niloc/ecs";
 import { SupportedModels, createSegmenter, drawBokehEffect, toBinaryMask, type BodySegmenter } from "@tensorflow-models/body-segmentation";
-import type { Background } from "./VideoEffect";
 
 export type BlurOptions = {
     foregroundThreshold: number,
     blurAmount: number,
     edgeBlurAmount: number,
-    flipHorizontal: boolean,
 }
 
 export namespace BlurOptions {
@@ -16,8 +14,6 @@ export namespace BlurOptions {
             foregroundThreshold: 0.7,
             blurAmount: 15,
             edgeBlurAmount: 3,
-            flipHorizontal: false,
-
         }
     }
 
@@ -25,10 +21,7 @@ export namespace BlurOptions {
 
 export type AlphaOptions = {
     foregroundThreshold: number,
-    maskOpacity: number,
     maskBlurAmount: number,
-    flipHorizontal: boolean,
-    background: Background
 }
 
 export class SegmentationModel extends Resource {
@@ -86,7 +79,7 @@ export class SegmentationModel extends Resource {
             options.foregroundThreshold,
             options.blurAmount,
             options.edgeBlurAmount,
-            options.flipHorizontal
+            false
         )
     }
 

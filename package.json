@@ -17,9 +17,11 @@
     "@tensorflow-models/body-segmentation": "^1.0.2",
     "@tensorflow/tfjs-converter": "^4.22.0",
     "@tensorflow/tfjs-core": "^4.22.0",
+    "@types/simple-peer": "^9.11.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "simple-peer": "^9.11.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
